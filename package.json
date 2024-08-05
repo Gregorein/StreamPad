@@ -1,8 +1,13 @@
 {
   "name": "streampad",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "description": "A customizable control interface for streamers, featuring plugin support and integrations with popular streaming platforms.",
+  "version": "1.0.0",
+  "repository": "https://github.com/Gregorein/StreamPad",
+  "author": {
+    "name": "Gregorein",
+    "email": "contact@gregbak.com"
+  },
+  "license": "GPL-3.0 license",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -10,10 +15,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/joy": "^5.0.0-beta.48",
+    "framer-motion": "^11.3.21",
+    "framer-motion-3d": "^11.3.21",
+    "lucide-react": "^0.424.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
+    "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
