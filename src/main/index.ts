@@ -1,43 +1,9 @@
-import { app, shell, BrowserWindow, ipcMain } from "electron"
-import { join } from "path"
-import { electronApp, optimizer, is } from "@electron-toolkit/utils"
+import { app, ipcMain } from "electron"
+import { electronApp, optimizer } from "@electron-toolkit/utils"
 // import icon from '../../assets/icon.png?asset'
 import { EVENTS } from "shared/constants"
-
-const createWindow = (): BrowserWindow => {
-	// Create the browser window.
-	const mainWindow = new BrowserWindow({
-		width: 1280,
-		height: 800,
-		show: false,
-		frame: false,
-		autoHideMenuBar: true,
-		icon: join(__dirname, "../../assets/icon.png"),
-		webPreferences: {
-			preload: join(__dirname, "../preload/index.js"),
-			sandbox: false
-		}
-	})
-
-	mainWindow.on("ready-to-show", () => {
-		mainWindow.show()
-	})
-
-	mainWindow.webContents.setWindowOpenHandler((details) => {
-		shell.openExternal(details.url).catch((error) => console.error(error))
-		return { action: "deny" }
-	})
-
-	if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-		mainWindow.loadURL(process.env.ELECTRON_RENDERER_URL).catch((error) => console.error(error))
-	} else {
-		mainWindow
-			.loadFile(join(__dirname, "../renderer/index.html"))
-			.catch((error) => console.error(error))
-	}
-
-	return mainWindow
-}
+import { createWindow } from "./window"
+import { createTray } from "./tray"
 
 app
 	.whenReady()
@@ -50,6 +16,7 @@ app
 		})
 
 		const window = createWindow()
+		const tray = createTray()
 
 		// app.on('activate', function () {
 		//   // On macOS it's common to re-create a window in the app when the
@@ -63,9 +30,18 @@ app
 		//   }
 		// })
 
-		ipcMain.on(EVENTS.WINDOW_CLOSE, () => {
-			window.close()
+		ipcMain.on(EVENTS.QUIT, () => {
+			app.quit()
 		})
+
+		ipcMain.on(EVENTS.WINDOW_OPEN, () => {
+			window.show()
+		})
+
+		ipcMain.on(EVENTS.WINDOW_HIDE, () => {
+			window.hide()
+		})
+
 		ipcMain.on(EVENTS.WINDOW_MINIMIZE, () => {
 			window.minimize()
 		})

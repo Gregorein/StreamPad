@@ -1,26 +1,126 @@
-import { Box, Button, ButtonGroup, IconButton, Typography } from "@mui/joy"
+import {
+	Box,
+	Button,
+	ButtonGroup,
+	Divider,
+	Drawer,
+	IconButton,
+	List,
+	ListItem,
+	ListItemButton,
+	ListItemContent,
+	ListItemDecorator,
+	ModalClose,
+	Typography
+} from "@mui/joy"
 
-import { PanelBottom, PencilRuler, Settings, X } from "lucide-react"
+import { Github, LogOut, Menu, Minus, PencilRuler, Settings, ToyBrick, X } from "lucide-react"
+import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
 import { EVENTS } from "shared/constants"
 
-// import packageJson from "../../../../package.json"
+import packageJson from "../../../../package.json"
 
 const { ipcRenderer } = window.electron
 
 const Nav = () => {
+	const [open, setOpen] = useState(false)
+
 	const location = useLocation()
 
 	const handleMinimize = () => {
 		ipcRenderer.send(EVENTS.WINDOW_MINIMIZE)
 	}
 	const handleClose = () => {
-		ipcRenderer.send(EVENTS.WINDOW_CLOSE)
+		ipcRenderer.send(EVENTS.WINDOW_HIDE)
 	}
+
+	const handleQuit = () => {
+		ipcRenderer.send(EVENTS.QUIT)
+	}
+
+	const handleGithub = () => {
+		window.open("https://github.com/Gregorein/streampad", "_blank", "noopener,noreferrer")
+	}
+
+	const navigation = [
+		{
+			name: "Settings",
+			path: "/",
+			icon: <Settings />
+		},
+		{
+			name: "Plugins",
+			path: "/plugins",
+			icon: <ToyBrick />
+		},
+		{
+			name: "Edit UI",
+			path: "/editor",
+			icon: <PencilRuler />
+		}
+	]
 
 	return (
 		<>
+			<Drawer size="sm" open={open} onClose={() => setOpen(false)}>
+				<ModalClose />
+
+				<List
+					sx={{
+						display: "flex",
+						flex: 1,
+						justifyContent: "center",
+						WebkitAppRegion: "no-drag"
+					}}
+				>
+					{navigation.map((item) => (
+						<ListItem key={item.name}>
+							<ListItemButton
+								component={Link}
+								to={item.path}
+								selected={location.pathname === item.path}
+								color="primary"
+							>
+								<ListItemDecorator>{item.icon}</ListItemDecorator>
+								<ListItemContent>{item.name}</ListItemContent>
+							</ListItemButton>
+						</ListItem>
+					))}
+				</List>
+
+				<List
+					sx={{
+						display: "flex",
+						flex: 0,
+						WebkitAppRegion: "no-drag"
+					}}
+				>
+					<Typography level="body-sm" sx={{ padding: 2 }}>
+						StreamPad v.{packageJson.version}
+					</Typography>
+					<ListItem>
+						<ListItemButton onClick={handleGithub}>
+							<ListItemDecorator>
+								<Github />
+							</ListItemDecorator>
+							<ListItemContent>StreamPad&apos;s GitHub</ListItemContent>
+						</ListItemButton>
+					</ListItem>
+
+					<Divider />
+					<ListItem>
+						<ListItemButton onClick={handleQuit} color="danger">
+							<ListItemDecorator>
+								<LogOut />
+							</ListItemDecorator>
+							<ListItemContent>Quit</ListItemContent>
+						</ListItemButton>
+					</ListItem>
+				</List>
+			</Drawer>
+
 			<Box
 				component="header"
 				sx={{
@@ -42,28 +142,14 @@ const Nav = () => {
 						flex: 1
 					}}
 				>
-					<Button
-						component={Link}
-						startDecorator={<Settings />}
-						to="/"
-						color={location.pathname === "/" ? "primary" : "neutral"}
+					<IconButton
+						onClick={() => setOpen(true)}
 						sx={{
 							WebkitAppRegion: "no-drag"
 						}}
 					>
-						Settings
-					</Button>
-					<Button
-						component={Link}
-						startDecorator={<PencilRuler />}
-						to="/editor"
-						color={location.pathname === "/editor" ? "primary" : "neutral"}
-						sx={{
-							WebkitAppRegion: "no-drag"
-						}}
-					>
-						Edit UI
-					</Button>
+						<Menu />
+					</IconButton>
 				</ButtonGroup>
 
 				<Typography
@@ -79,7 +165,7 @@ const Nav = () => {
 
 				<ButtonGroup
 					size="sm"
-					variant="soft"
+					variant="plain"
 					sx={{
 						display: "flex",
 						justifyContent: "flex-end",
@@ -92,7 +178,7 @@ const Nav = () => {
 							WebkitAppRegion: "no-drag"
 						}}
 					>
-						<PanelBottom />
+						<Minus />
 					</IconButton>
 					<IconButton
 						onClick={handleClose}

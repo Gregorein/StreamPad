@@ -1,6 +1,6 @@
 {
   "name": "streampad",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A customizable control interface for streamers, featuring plugin support and integrations with popular streaming platforms.",
   "repository": "https://github.com/Gregorein/StreamPad",
   "author": {

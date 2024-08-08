@@ -19,6 +19,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    "@typescript-eslint/explicit-function-return-type": "off", // https://github.com/typescript-eslint/typescript-eslint
   },
   parserOptions: {
     ecmaVersion: 'latest',
