@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom"
 
 import { EVENTS } from "shared/constants"
 
+import packageJson from "../../../../package.json"
+
 const { ipcRenderer } = window.electron
 
 const Nav = () => {
@@ -70,7 +72,7 @@ const Nav = () => {
 					msUserSelect: 'none',     // IE10+
 					userSelect: 'none',       // Standard
 				}}>
-					StreamPad v.{"packageJson.version"} {EVENTS.WINDOW_MINIMIZE}
+					StreamPad
 				</Typography>
 
 				<ButtonGroup

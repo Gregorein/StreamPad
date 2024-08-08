@@ -23,7 +23,8 @@
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux"
+    "build:linux": "electron-vite build && electron-builder --linux",
+    "prepare": "husky"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
@@ -54,6 +55,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "framer-motion": "^11.3.23",
     "framer-motion-3d": "^11.3.23",
+    "husky": "^9.1.4",
     "lucide-react": "^0.424.0",
     "normalize.css": "^8.0.1",
     "prettier": "^3.3.2",
