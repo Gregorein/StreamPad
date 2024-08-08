@@ -82,6 +82,7 @@ const Nav = () => {
 								to={item.path}
 								selected={location.pathname === item.path}
 								color="primary"
+								onClick={() => setOpen(false)}
 							>
 								<ListItemDecorator>{item.icon}</ListItemDecorator>
 								<ListItemContent>{item.name}</ListItemContent>
