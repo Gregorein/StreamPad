@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 
 import { EVENTS } from "shared/constants"
 
-import packageJson from "../../../../package.json"
+// import packageJson from "../../../../package.json"
 
 const { ipcRenderer } = window.electron
 
@@ -32,7 +32,7 @@ const Nav = () => {
 					WebkitAppRegion: "drag",
 					display: "flex",
 					justifyContent: "space-between",
-					alignItems: "center",
+					alignItems: "center"
 				}}
 			>
 				<ButtonGroup
@@ -48,7 +48,7 @@ const Nav = () => {
 						to="/"
 						color={location.pathname === "/" ? "primary" : "neutral"}
 						sx={{
-							WebkitAppRegion: "no-drag",
+							WebkitAppRegion: "no-drag"
 						}}
 					>
 						Settings
@@ -59,19 +59,21 @@ const Nav = () => {
 						to="/editor"
 						color={location.pathname === "/editor" ? "primary" : "neutral"}
 						sx={{
-							WebkitAppRegion: "no-drag",
+							WebkitAppRegion: "no-drag"
 						}}
 					>
 						Edit UI
 					</Button>
 				</ButtonGroup>
 
-				<Typography sx={{
-					WebkitUserSelect: 'none', // Safari
-					MozUserSelect: 'none',    // Firefox
-					msUserSelect: 'none',     // IE10+
-					userSelect: 'none',       // Standard
-				}}>
+				<Typography
+					sx={{
+						WebkitUserSelect: "none", // Safari
+						MozUserSelect: "none", // Firefox
+						msUserSelect: "none", // IE10+
+						userSelect: "none" // Standard
+					}}
+				>
 					StreamPad
 				</Typography>
 
@@ -81,13 +83,13 @@ const Nav = () => {
 					sx={{
 						display: "flex",
 						justifyContent: "flex-end",
-						flex: 1,
+						flex: 1
 					}}
 				>
 					<IconButton
 						onClick={handleMinimize}
 						sx={{
-							WebkitAppRegion: "no-drag",
+							WebkitAppRegion: "no-drag"
 						}}
 					>
 						<PanelBottom />
@@ -95,7 +97,7 @@ const Nav = () => {
 					<IconButton
 						onClick={handleClose}
 						sx={{
-							WebkitAppRegion: "no-drag",
+							WebkitAppRegion: "no-drag"
 						}}
 					>
 						<X />

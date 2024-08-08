@@ -2,7 +2,7 @@ import { extendTheme } from "@mui/joy"
 
 const theme = extendTheme({
 	fontFamily: {
-		body: "'Roboto', var(--joy-fontFamily-fallback)",
+		body: "'Roboto', var(--joy-fontFamily-fallback)"
 	}
 })
 

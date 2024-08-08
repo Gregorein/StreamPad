@@ -10,6 +10,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
+    "prettier",
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
@@ -22,7 +23,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
+    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.web.json'],
     tsconfigRootDir: __dirname,
   },
 }
