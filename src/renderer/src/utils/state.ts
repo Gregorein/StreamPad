@@ -5,7 +5,8 @@ const { savePreferences, loadPreferences } = window.api
 
 type AtomWithPreferences<T> = WritableAtom<T, [T], void>
 export const atomWithPreferences = <T>(key: string, initialValue: T): AtomWithPreferences<T> => {
-	const preferences = loadPreferences() as Preferences
+	const preferences = (loadPreferences() as Preferences) || {}
+
 	const baseAtom = atom(preferences[key] || initialValue)
 
 	const derivedAtom = atom(
