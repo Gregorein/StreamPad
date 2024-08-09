@@ -1,6 +1,5 @@
 import {
 	Box,
-	Button,
 	ButtonGroup,
 	Divider,
 	Drawer,
@@ -14,34 +13,60 @@ import {
 	Typography
 } from "@mui/joy"
 
-import { Github, LogOut, Menu, Minus, PencilRuler, Settings, ToyBrick, X } from "lucide-react"
-import { useState } from "react"
+import {
+	Check,
+	Github,
+	LogOut,
+	Menu,
+	Minus,
+	PencilRuler,
+	Settings,
+	ToyBrick,
+	X
+} from "lucide-react"
+import { ReactElement, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
 import { EVENTS } from "shared/constants"
 
 import packageJson from "../../../../package.json"
+import Dialog from "components/Dialog"
+import { ATOMS } from "../utils/state"
+import { useAtom } from "jotai"
 
 const { ipcRenderer } = window.electron
 
-const Nav = () => {
-	const [open, setOpen] = useState(false)
+const Nav = (): ReactElement => {
+	const [acknowledgedMinimizeWarning, setAcknowledgedMinimizeWarning] = useAtom(
+		ATOMS.acknowledgedMinimizeWarning
+	)
+	const [drawerOpen, setDrawerOpen] = useState(false)
+	const [dialogOpen, setDialogOpen] = useState(false)
 
 	const location = useLocation()
 
-	const handleMinimize = () => {
+	const handleMinimize = (): void => {
 		ipcRenderer.send(EVENTS.WINDOW_MINIMIZE)
 	}
-	const handleClose = () => {
+	const handleClose = (): void => {
+		setAcknowledgedMinimizeWarning(true)
 		ipcRenderer.send(EVENTS.WINDOW_HIDE)
 	}
 
-	const handleQuit = () => {
+	const handleQuit = (): void => {
 		ipcRenderer.send(EVENTS.QUIT)
 	}
 
-	const handleGithub = () => {
+	const handleGithub = (): void => {
 		window.open("https://github.com/Gregorein/streampad", "_blank", "noopener,noreferrer")
+	}
+
+	const handleOpenDialogOrClose = (): void => {
+		if (acknowledgedMinimizeWarning) {
+			handleClose()
+		} else {
+			setDialogOpen(true)
+		}
 	}
 
 	const navigation = [
@@ -64,7 +89,7 @@ const Nav = () => {
 
 	return (
 		<>
-			<Drawer size="sm" open={open} onClose={() => setOpen(false)}>
+			<Drawer size="sm" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
 				<ModalClose />
 
 				<List
@@ -82,7 +107,7 @@ const Nav = () => {
 								to={item.path}
 								selected={location.pathname === item.path}
 								color="primary"
-								onClick={() => setOpen(false)}
+								onClick={() => setDrawerOpen(false)}
 							>
 								<ListItemDecorator>{item.icon}</ListItemDecorator>
 								<ListItemContent>{item.name}</ListItemContent>
@@ -144,7 +169,7 @@ const Nav = () => {
 					}}
 				>
 					<IconButton
-						onClick={() => setOpen(true)}
+						onClick={() => setDrawerOpen(true)}
 						sx={{
 							WebkitAppRegion: "no-drag"
 						}}
@@ -182,7 +207,7 @@ const Nav = () => {
 						<Minus />
 					</IconButton>
 					<IconButton
-						onClick={handleClose}
+						onClick={handleOpenDialogOrClose}
 						sx={{
 							WebkitAppRegion: "no-drag"
 						}}
@@ -191,6 +216,19 @@ const Nav = () => {
 					</IconButton>
 				</ButtonGroup>
 			</Box>
+
+			{!acknowledgedMinimizeWarning && (
+				<Dialog
+					open={dialogOpen}
+					title="This will not quit StreamPad"
+					text="Closing this window using X icon will not quit StreamPad. Use `quit` option from context menu from tray icon or the collapsible instead."
+					onCancel={() => setDialogOpen(false)}
+					labelCancel="Cancel"
+					onConfirm={handleClose}
+					labelConfirm="I understand"
+					iconConfirm={<Check />}
+				/>
+			)}
 		</>
 	)
 }

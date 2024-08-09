@@ -1,7 +1,7 @@
-appId: com.electron.app
+appId: com.gregorein.streampad
 productName: streampad
 directories:
-  buildResources: build
+  buildResources: assets
 files:
   - '!**/.vscode/*'
   - '!src/*'
@@ -19,7 +19,7 @@ nsis:
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 mac:
-  entitlementsInherit: build/entitlements.mac.plist
+  entitlementsInherit: assets/entitlements.mac.plist
   extendInfo:
     - NSCameraUsageDescription: Application requests access to the device's camera.
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
@@ -40,4 +40,4 @@ appImage:
 npmRebuild: false
 publish:
   provider: generic
-  url: https://example.com/auto-updates
+  url: https://streampad.website/auto-updates

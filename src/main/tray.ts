@@ -5,14 +5,14 @@ import { EVENTS } from "shared/constants"
 const defaultContextMenu: Partial<MenuItem>[] = [
 	{
 		label: "Open app...",
-		click: () => {
+		click: (): void => {
 			ipcMain.emit(EVENTS.WINDOW_OPEN)
 		}
 	},
 	{ type: "separator" },
 	{
 		label: "Quit",
-		click: () => {
+		click: (): void => {
 			ipcMain.emit(EVENTS.QUIT)
 		}
 	}
@@ -27,7 +27,7 @@ interface ContextMenuType {
 export const setContextMenu = (
 	tray: Tray,
 	{ webAPIaddress, webAPIRunning, companionAPIRunning }: ContextMenuType
-) => {
+): void => {
 	const menuItems: Partial<MenuItem>[] = []
 
 	if (webAPIaddress) {
@@ -79,7 +79,7 @@ export const setContextMenu = (
 	tray.setContextMenu(contextMenu)
 }
 
-export const createTray = () => {
+export const createTray = (): Tray => {
 	const tray = new Tray(join(__dirname, "../../assets/trayIcon_default.png"))
 
 	tray.setToolTip("StreamPad")
@@ -93,6 +93,6 @@ export const createTray = () => {
 }
 
 type TrayAppStatus = "default" | "error" | "running"
-export const setTrayIcon = (tray: Tray, status: TrayAppStatus) => {
+export const setTrayIcon = (tray: Tray, status: TrayAppStatus): void => {
 	tray.setImage(join(__dirname, `../../assets/trayIcon_${status}.png`))
 }

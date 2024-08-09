@@ -1,6 +1,0 @@
-- drag-n-drop support for easy installation of plugins & ControlUI configs.
-- localisation
-- tray menu & hide menu
-- splash screen, hide react initialisation
-- borderless custom window.
-- webserver

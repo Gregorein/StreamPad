@@ -5,6 +5,8 @@ import { EVENTS } from "shared/constants"
 import { createWindow } from "./window"
 import { createTray } from "./tray"
 
+import "./state"
+
 app
 	.whenReady()
 	.then(() => {
@@ -16,7 +18,7 @@ app
 		})
 
 		const window = createWindow()
-		const tray = createTray()
+		createTray()
 
 		// app.on('activate', function () {
 		//   // On macOS it's common to re-create a window in the app when the

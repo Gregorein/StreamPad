@@ -1,6 +1,6 @@
 {
   "name": "streampad",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A customizable control interface for streamers, featuring plugin support and integrations with popular streaming platforms.",
   "repository": "https://github.com/Gregorein/StreamPad",
   "author": {
@@ -8,7 +8,8 @@
     "email": "contact@gregbak.com"
   },
   "homepage": "https://streampad.website/",
-  "license": "GPL-3.0 license",
+  "license": "LICENSE",
+  "private": true,
   "main": "./out/main/index.js",
   "scripts": {
     "format": "prettier --write .",
@@ -19,11 +20,11 @@
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
     "build": "npm run typecheck && electron-vite build",
-    "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps",
     "prepare": "husky"
   },
   "dependencies": {
@@ -54,10 +55,11 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.9",
-    "framer-motion": "^11.3.23",
-    "framer-motion-3d": "^11.3.23",
+    "framer-motion": "^11.3.24",
+    "framer-motion-3d": "^11.3.24",
     "husky": "^9.1.4",
-    "lucide-react": "^0.424.0",
+    "jotai": "^2.9.2",
+    "lucide-react": "^0.427.0",
     "normalize.css": "^8.0.1",
     "prettier": "^3.3.2",
     "react": "^18.3.1",

@@ -20,11 +20,15 @@ import "@fontsource/roboto/900-italic.css"
 
 import { CssVarsProvider } from "@mui/joy"
 import theme from "theme/theme"
+import { Provider as StateProvider } from "jotai"
+import store from "./utils/state"
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<CssVarsProvider defaultMode="dark" modeStorageKey="" theme={theme}>
-			<App />
-		</CssVarsProvider>
+		<StateProvider store={store}>
+			<CssVarsProvider defaultMode="dark" modeStorageKey="" theme={theme}>
+				<App />
+			</CssVarsProvider>
+		</StateProvider>
 	</React.StrictMode>
 )

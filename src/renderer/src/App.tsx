@@ -1,8 +1,9 @@
 import { Sheet } from "@mui/joy"
 import Nav from "components/Nav"
 import View from "components/View"
+import { ReactElement } from "react"
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
-const App = () => (
+const App = (): ReactElement => (
 	<Sheet
 		component="main"
 		sx={{

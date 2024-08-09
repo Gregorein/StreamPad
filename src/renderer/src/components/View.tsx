@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/joy"
-import { ReactNode } from "react"
+import { ReactElement } from "react"
 
 interface ViewProps {
-	children?: ReactNode
+	children?: ReactElement
 }
 
-const View = ({ children }: ViewProps) => (
+const View = ({ children }: ViewProps): ReactElement => (
 	<Box
 		sx={{
 			display: "flex",

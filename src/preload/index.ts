@@ -1,8 +1,16 @@
-import { contextBridge } from "electron"
+import { contextBridge, ipcRenderer } from "electron"
 import { electronAPI } from "@electron-toolkit/preload"
+import { EVENTS } from "shared/constants"
 
 // Custom APIs for renderer
-const api = {}
+const api = {
+	loadPreferences: (): void => {
+		ipcRenderer.invoke(EVENTS.LOAD_STATE)
+	},
+	savePreferences: (state: unknown): void => {
+		ipcRenderer.invoke(EVENTS.SAVE_STATE, state)
+	}
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
