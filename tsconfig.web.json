@@ -17,9 +17,10 @@
     
       "components/*": ["src/renderer/src/components/*"],
       "utils/*": ["src/renderer/src/utils/*"],
-      "assets/*": ["src/renderer/src/assets/*"],
       "views/*": ["src/renderer/src/views/*"],
-      "theme/*": ["src/renderer/src/theme/*"]
+      "theme/*": ["src/renderer/src/theme/*"],
+      
+      "assets/*": ["assets/*"]
     }
   }
 }

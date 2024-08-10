@@ -6,7 +6,8 @@ import { Switch } from "@mui/joy"
 import { SettingsItemComponentProps } from "."
 
 const title = "Hide warning about quitting StreamPad?"
-const description = "This option hides the warning dialog that is displayed when closing the window using `x` button for the first time."
+const description =
+	"This option hides the warning dialog that is displayed when closing the window using `x` button for the first time."
 
 const Component = ({ title, description }: SettingsItemComponentProps): ReactNode => {
 	const [acknowledgedMinimizeWarning, setAcknowledgedMinimizeWarning] = useAtom(

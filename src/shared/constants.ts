@@ -17,3 +17,11 @@ export const ROUTES = {
 	EDITOR: "/editor",
 	PLUGINS: "/plugins"
 }
+
+export const LANGUAGES = {
+	English: "en",
+	Polski: "pl",
+	Español: "es",
+	Français: "fr",
+	Italiano: "it"
+}

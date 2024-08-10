@@ -34,6 +34,8 @@ import Dialog from "components/Dialog"
 import { ATOMS } from "../utils/state"
 import { useAtom } from "jotai"
 
+import Icon from "utils/Icon"
+
 const { ipcRenderer } = window.electron
 
 const Nav = (): ReactNode => {
@@ -176,16 +178,25 @@ const Nav = (): ReactNode => {
 					</IconButton>
 				</ButtonGroup>
 
-				<Typography
+				<Box
 					sx={{
-						WebkitUserSelect: "none", // Safari
-						MozUserSelect: "none", // Firefox
-						msUserSelect: "none", // IE10+
-						userSelect: "none" // Standard
+						display: "flex",
+						gap: 1,
+						alignItems: "center"
 					}}
 				>
-					StreamPad
-				</Typography>
+					<Icon size={24} />
+					<Typography
+						sx={{
+							WebkitUserSelect: "none", // Safari
+							MozUserSelect: "none", // Firefox
+							msUserSelect: "none", // IE10+
+							userSelect: "none" // Standard
+						}}
+					>
+						StreamPad
+					</Typography>
+				</Box>
 
 				<ButtonGroup
 					size="sm"

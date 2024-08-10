@@ -58,7 +58,9 @@ const Settings = (): ReactNode => {
 							height: "100%"
 						}}
 					>
-						<Alert color="danger" size="lg">No settings found for {`"${search}"`}</Alert>
+						<Alert color="danger" size="lg">
+							No settings found for {`"${search}"`}
+						</Alert>
 					</Box>
 				)}
 			</Stack>

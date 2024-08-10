@@ -18,7 +18,7 @@ const SettingsItem = ({ title, description, children, onClick }: SettingsItemPro
 			"&:hover": {
 				backgroundColor: "background.level1"
 			},
-			cursor: "pointer"
+			cursor: onClick ? "pointer" : "auto"
 		}}
 		onClick={onClick}
 	>
@@ -26,6 +26,7 @@ const SettingsItem = ({ title, description, children, onClick }: SettingsItemPro
 			sx={{
 				display: "flex",
 				flexDirection: "column",
+				flex: 1,
 				gap: 1
 			}}
 		>
