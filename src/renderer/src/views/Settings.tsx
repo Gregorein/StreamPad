@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react"
 import View from "components/View"
 import { Alert, Box, Divider, IconButton, Input, Stack, Typography } from "@mui/joy"
 import { X, Search } from "lucide-react"
-import settingsItems from "utils/setttings"
+import settingsItems from "utils/settings/index"
 
 const Settings = (): ReactNode => {
 	const [search, setSearch] = useState("")
