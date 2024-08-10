@@ -10,7 +10,7 @@ export const Component = (): ReactNode => (
 		</SettingsItem>
 		<SettingsItem description={"web API status"}>
 			<Button variant="soft" disabled startDecorator={<CircularProgress thickness={4} />}>
-				API server is not available
+				API is not available
 			</Button>
 		</SettingsItem>
 	</>
