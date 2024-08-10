@@ -4,19 +4,19 @@ import { ReactNode } from "react"
 interface DialogProps {
 	open: boolean
 	title: string
-	text: string
-	onCancel: () => void
-	labelCancel: string
+	children: ReactNode
+	onCancel?: () => void
+	labelCancel?: string
 	iconCancel?: ReactNode
-	onConfirm: () => void
-	labelConfirm: string
+	onConfirm?: () => void
+	labelConfirm?: string
 	iconConfirm?: ReactNode
 }
 
 const Dialog = ({
 	open,
 	title,
-	text,
+	children,
 	onCancel,
 	labelCancel,
 	iconCancel = undefined,
@@ -32,14 +32,27 @@ const Dialog = ({
 	>
 		<ModalDialog variant="plain">
 			<DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-			<DialogContent id="alert-dialog-description">{text}</DialogContent>
+			<DialogContent
+				id="alert-dialog-description"
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: 2
+				}}
+			>
+				{children}
+			</DialogContent>
 			<DialogActions>
-				<Button startDecorator={iconCancel} onClick={onCancel} color="danger">
-					{labelCancel}
-				</Button>
-				<Button startDecorator={iconConfirm} onClick={onConfirm} color="success">
-					{labelConfirm}
-				</Button>
+				{labelCancel && (
+					<Button startDecorator={iconCancel} onClick={onCancel} color="danger">
+						{labelCancel}
+					</Button>
+				)}
+				{labelConfirm && (
+					<Button startDecorator={iconConfirm} onClick={onConfirm} color="success">
+						{labelConfirm}
+					</Button>
+				)}
 			</DialogActions>
 		</ModalDialog>
 	</Modal>

@@ -60,6 +60,7 @@ const Settings = (): ReactNode => {
 					onChange={(e) => setSearch(e.target.value)}
 				/>
 			</Box>
+
 			{renderWarning ? (
 				<Box
 					sx={{

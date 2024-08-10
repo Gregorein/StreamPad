@@ -230,13 +230,17 @@ const Nav = (): ReactNode => {
 				<Dialog
 					open={dialogOpen}
 					title="This will not quit StreamPad"
-					text="Closing this window using X icon will not quit StreamPad. Use `quit` option from context menu from tray icon or the collapsible instead."
 					onCancel={() => setDialogOpen(false)}
 					labelCancel="Cancel"
 					onConfirm={handleClose}
 					labelConfirm="I understand"
 					iconConfirm={<Check />}
-				/>
+				>
+					<Typography level="body-md">
+						Closing this window using X icon will not quit StreamPad. Use `quit` option from context
+						menu from tray icon or the collapsible instead.
+					</Typography>
+				</Dialog>
 			)}
 		</>
 	)
