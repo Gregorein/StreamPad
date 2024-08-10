@@ -1,48 +1,8 @@
 import { ReactNode, useState } from "react"
 import View from "components/View"
-import { Box, Divider, IconButton, Input, Stack, Switch, Typography } from "@mui/joy"
+import { Alert, Box, Divider, IconButton, Input, Stack, Typography } from "@mui/joy"
 import { X, Search } from "lucide-react"
-import { ATOMS } from "utils/state"
-import { useAtom } from "jotai"
-import SettingsItem from "components/SettingsItem"
-
-type SettingsItemComponentProps = {
-	title: string
-	description?: string
-}
-
-type SettingsItem = {
-	title: string
-	description?: string
-	Component: (props: SettingsItemComponentProps) => ReactNode
-}
-
-const settingsItems: SettingsItem[] = [
-	{
-		title: "Hide warning about quitting StreamPad?",
-		description:
-			"This option hides the warning dialog that is displayed when closing the window using `x` button for the first time.",
-		Component: ({ title, description }: SettingsItemComponentProps): ReactNode => {
-			const [acknowledgedMinimizeWarning, setAcknowledgedMinimizeWarning] = useAtom(
-				ATOMS.acknowledgedMinimizeWarning
-			)
-
-			return (
-				<SettingsItem
-					title={title}
-					description={description}
-					onClick={() => setAcknowledgedMinimizeWarning(!acknowledgedMinimizeWarning)}
-				>
-					<Switch
-						checked={acknowledgedMinimizeWarning}
-						endDecorator={acknowledgedMinimizeWarning ? "Yes" : "No"}
-						size="lg"
-					/>
-				</SettingsItem>
-			)
-		}
-	}
-]
+import settingsItems from "utils/setttings"
 
 const Settings = (): ReactNode => {
 	const [search, setSearch] = useState("")
@@ -79,10 +39,28 @@ const Settings = (): ReactNode => {
 					onChange={(e) => setSearch(e.target.value)}
 				/>
 			</Box>
-			<Stack spacing={2} divider={<Divider />}>
+			<Stack
+				spacing={2}
+				divider={<Divider />}
+				sx={{
+					height: "100%"
+				}}
+			>
 				{settingsItemsToRender.map(({ title, description, Component }) => (
 					<Component key={title} title={title} description={description} />
 				))}
+				{settingsItemsToRender.length == 0 && (
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							height: "100%"
+						}}
+					>
+						<Alert color="danger" size="lg">No settings found for {`"${search}"`}</Alert>
+					</Box>
+				)}
 			</Stack>
 		</View>
 	)

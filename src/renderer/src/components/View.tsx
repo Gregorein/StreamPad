@@ -16,7 +16,7 @@ const View = ({ children }: ViewProps): ReactNode => (
 			overflow: "hidden"
 		}}
 	>
-		<Typography>{children}</Typography>
+		{children}
 	</Box>
 )
 
