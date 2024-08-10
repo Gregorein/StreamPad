@@ -24,10 +24,10 @@ import {
 	ToyBrick,
 	X
 } from "lucide-react"
-import { ReactElement, useState } from "react"
+import { ReactNode, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 
-import { EVENTS } from "shared/constants"
+import { EVENTS, ROUTES } from "shared/constants"
 
 import packageJson from "../../../../package.json"
 import Dialog from "components/Dialog"
@@ -36,7 +36,7 @@ import { useAtom } from "jotai"
 
 const { ipcRenderer } = window.electron
 
-const Nav = (): ReactElement => {
+const Nav = (): ReactNode => {
 	const [acknowledgedMinimizeWarning, setAcknowledgedMinimizeWarning] = useAtom(
 		ATOMS.acknowledgedMinimizeWarning
 	)
@@ -72,17 +72,17 @@ const Nav = (): ReactElement => {
 	const navigation = [
 		{
 			name: "Settings",
-			path: "/",
+			path: ROUTES.SETTINGS,
 			icon: <Settings />
 		},
 		{
 			name: "Plugins",
-			path: "/plugins",
+			path: ROUTES.PLUGINS,
 			icon: <ToyBrick />
 		},
 		{
 			name: "Edit UI",
-			path: "/editor",
+			path: ROUTES.EDITOR,
 			icon: <PencilRuler />
 		}
 	]
@@ -150,8 +150,6 @@ const Nav = (): ReactElement => {
 			<Box
 				component="header"
 				sx={{
-					position: "fixed",
-					top: 0,
 					width: "100vw",
 					padding: 1,
 
@@ -217,7 +215,7 @@ const Nav = (): ReactElement => {
 				</ButtonGroup>
 			</Box>
 
-			{!acknowledgedMinimizeWarning && (
+			{!acknowledgedMinimizeWarning && dialogOpen && (
 				<Dialog
 					open={dialogOpen}
 					title="This will not quit StreamPad"

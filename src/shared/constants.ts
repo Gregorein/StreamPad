@@ -11,3 +11,9 @@ export const EVENTS = {
 	SAVE_STATE: "SAVE_STATE",
 	LOAD_STATE: "LOAD_STATE"
 }
+
+export const ROUTES = {
+	SETTINGS: "/", // default route
+	EDITOR: "/editor",
+	PLUGINS: "/plugins"
+}

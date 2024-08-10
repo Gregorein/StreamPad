@@ -1,5 +1,5 @@
 import { Button, DialogActions, DialogContent, DialogTitle, Modal, ModalDialog } from "@mui/joy"
-import { ReactElement } from "react"
+import { ReactNode } from "react"
 
 interface DialogProps {
 	open: boolean
@@ -7,10 +7,10 @@ interface DialogProps {
 	text: string
 	onCancel: () => void
 	labelCancel: string
-	iconCancel?: ReactElement
+	iconCancel?: ReactNode
 	onConfirm: () => void
 	labelConfirm: string
-	iconConfirm?: ReactElement
+	iconConfirm?: ReactNode
 }
 
 const Dialog = ({
@@ -23,7 +23,7 @@ const Dialog = ({
 	onConfirm,
 	labelConfirm,
 	iconConfirm = undefined
-}: DialogProps): ReactElement => (
+}: DialogProps): ReactNode => (
 	<Modal
 		open={open}
 		onClose={onCancel}

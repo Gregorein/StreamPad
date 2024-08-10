@@ -1,18 +1,19 @@
 import { Box, Typography } from "@mui/joy"
-import { ReactElement } from "react"
+import { ReactNode } from "react"
 
 interface ViewProps {
-	children?: ReactElement
+	children?: ReactNode
 }
 
-const View = ({ children }: ViewProps): ReactElement => (
+const View = ({ children }: ViewProps): ReactNode => (
 	<Box
 		sx={{
 			display: "flex",
-			justifyContent: "center",
-			alignItems: "center",
+			flexDirection: "column",
 			width: "100vw",
-			height: "100vh"
+			height: "100vh",
+			padding: 2,
+			overflow: "hidden"
 		}}
 	>
 		<Typography>{children}</Typography>

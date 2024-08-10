@@ -1,22 +1,27 @@
 import { Sheet } from "@mui/joy"
 import Nav from "components/Nav"
-import View from "components/View"
-import { ReactElement } from "react"
+import { ReactNode } from "react"
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
-const App = (): ReactElement => (
+import { ROUTES } from "shared/constants"
+import Settings from "views/Settings"
+import Plugins from "views/Plugins"
+import Editor from "views/Editor"
+const App = (): ReactNode => (
 	<Sheet
 		component="main"
 		sx={{
 			height: "100vh",
 			width: "100vw",
-			display: "flex"
+			display: "flex",
+			flexDirection: "column"
 		}}
 	>
 		<Router>
 			<Nav />
 			<Routes>
-				<Route path="/" element={<View>Hello World 👋</View>} />
-				<Route path="/editor" element={<View>editor</View>} />
+				<Route path={ROUTES.SETTINGS} Component={Settings} />
+				<Route path={ROUTES.PLUGINS} Component={Plugins} />
+				<Route path={ROUTES.EDITOR} Component={Editor} />
 			</Routes>
 		</Router>
 	</Sheet>
