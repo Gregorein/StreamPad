@@ -149,14 +149,15 @@ const Editor = (): ReactNode => {
 							flex: 3,
 							alignItems: "center",
 							justifyContent: "center",
-							backgroundColor: "background.body",
+							backgroundColor: "background.level1",
 							borderRadius: 8
 						}}
 					>
 						<Box
 							sx={{
 								border: "1px solid",
-								borderColor: "background.level2",
+								borderColor: "background.level1",
+								backgroundColor: "background.surface",
 								borderRadius: 8,
 								objectFit: "contain",
 								width,

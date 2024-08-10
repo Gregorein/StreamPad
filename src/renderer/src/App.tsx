@@ -19,9 +19,9 @@ const App = (): ReactNode => (
 		<Router>
 			<Nav />
 			<Routes>
+				<Route path={ROUTES.EDITOR} Component={Editor} />
 				<Route path={ROUTES.SETTINGS} Component={Settings} />
 				<Route path={ROUTES.PLUGINS} Component={Plugins} />
-				<Route path={ROUTES.EDITOR} Component={Editor} />
 			</Routes>
 		</Router>
 	</Sheet>

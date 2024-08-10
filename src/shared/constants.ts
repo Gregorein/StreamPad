@@ -13,8 +13,8 @@ export const EVENTS = {
 }
 
 export const ROUTES = {
-	SETTINGS: "/", // default route
-	EDITOR: "/editor",
+	EDITOR: "/", // default route
+	SETTINGS: "/settings",
 	PLUGINS: "/plugins"
 }
 
