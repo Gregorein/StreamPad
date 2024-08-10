@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/joy"
 import { ReactNode } from "react"
 
 type SettingsItemProps = {
-	title: string
+	title?: string
 	description?: string
 	children: ReactNode
 	onClick?: () => void
@@ -30,9 +30,11 @@ const SettingsItem = ({ title, description, children, onClick }: SettingsItemPro
 				gap: 1
 			}}
 		>
-			<Typography level="title-lg" sx={{ flex: 1 }}>
-				{title}
-			</Typography>
+			{title && (
+				<Typography level="title-lg" sx={{ flex: 1 }}>
+					{title}
+				</Typography>
+			)}
 
 			{description && (
 				<Typography level="body-sm" sx={{ flex: 1 }}>

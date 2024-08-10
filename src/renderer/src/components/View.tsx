@@ -12,7 +12,10 @@ const View = ({ children }: ViewProps): ReactNode => (
 			flexDirection: "column",
 			width: "100vw",
 			height: "100vh",
-			padding: 2,
+			paddingTop: 2,
+			paddingBottom: 2,
+			paddingLeft: 8,
+			paddingRight: 8,
 			overflow: "hidden"
 		}}
 	>

@@ -1,20 +1,17 @@
 import { createStore } from "jotai"
 import atomWithPreferences from "./atomWithPreferences"
 
-const defaultAtomValues = {
-	acknowledgedMinimizeWarning: false,
-	language: "en",
-	enabledWebApi: false,
-	enabledCompanionApi: false
+export const ATOMS = {
+	acknowledgedMinimizeWarning: atomWithPreferences<boolean>("acknowledgedMinimizeWarning", false),
+	language: atomWithPreferences<string>("language", "en"),
+	enabledWebApi: atomWithPreferences<boolean>("enabledWebApi", false),
+	enabledCompanionApi: atomWithPreferences<boolean>("enabledCompanionApi", false)
 }
 
-export const ATOMS = Object.fromEntries(
-	Object.entries(defaultAtomValues).map(([key, value]) => [key, atomWithPreferences(key, value)])
-)
-
 const store = createStore()
-Object.entries(ATOMS).forEach(([key, atom]) => {
-	store.set(atom, defaultAtomValues[key])
-})
+store.set(ATOMS.acknowledgedMinimizeWarning, false)
+store.set(ATOMS.language, "en")
+store.set(ATOMS.enabledWebApi, false)
+store.set(ATOMS.enabledCompanionApi, false)
 
 export default store

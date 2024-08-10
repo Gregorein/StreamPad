@@ -9,7 +9,7 @@ import { LANGUAGES } from "shared/constants"
 const title = "Application language"
 const description = "Select the language of the application."
 
-const Component = ({ title, description }: SettingsItemComponentProps): ReactNode => {
+export const Component = ({ title, description }: SettingsItemComponentProps): ReactNode => {
 	const [language, setLanguage] = useAtom(ATOMS.language)
 
 	const [open, setOpen] = useState(false)

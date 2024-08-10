@@ -23,10 +23,10 @@ import theme from "theme/theme"
 import { Provider as StateProvider } from "jotai"
 import store from "./utils/state"
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<StateProvider store={store}>
-			<CssVarsProvider defaultMode="dark" modeStorageKey="" theme={theme}>
+			<CssVarsProvider defaultMode="dark" modeStorageKey="colorScheme" theme={theme}>
 				<App />
 			</CssVarsProvider>
 		</StateProvider>
