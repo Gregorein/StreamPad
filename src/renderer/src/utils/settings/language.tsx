@@ -17,8 +17,6 @@ const Component = ({ title, description }: SettingsItemComponentProps): ReactNod
 	const setLanguageValue = (event): void => {
 		const newLanguage = event.target.value
 		// setLanguage(newLanguage)
-
-		console.log(newLanguage)
 	}
 
 	return (

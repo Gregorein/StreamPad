@@ -7,8 +7,6 @@ import settingsItems from "utils/settings/index"
 const Settings = (): ReactNode => {
 	const [search, setSearch] = useState("")
 
-	console.log({ search })
-
 	const settingsItemsToRender = settingsItems.filter(
 		({ title, description }) => title.includes(search) || description?.includes(search)
 	)
