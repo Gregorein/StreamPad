@@ -3,6 +3,7 @@ import View from "components/View"
 import { Alert, Box, IconButton, Input, Stack, Typography } from "@mui/joy"
 import { X, Search } from "lucide-react"
 import settingsItems from "utils/settings/index"
+import SearchInput from "@renderer/components/SearchInput"
 
 const Settings = (): ReactNode => {
 	const [search, setSearch] = useState("")
@@ -46,19 +47,7 @@ const Settings = (): ReactNode => {
 			>
 				<Typography level="h2">Settings</Typography>
 
-				<Input
-					startDecorator={<Search />}
-					endDecorator={
-						search.length > 0 && (
-							<IconButton variant="soft" color="danger" onClick={() => setSearch("")}>
-								<X size={20} />
-							</IconButton>
-						)
-					}
-					placeholder="Search settings..."
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
+				<SearchInput value={search} onChange={setSearch} placeholder="Search settings..." />
 			</Box>
 
 			{renderWarning ? (

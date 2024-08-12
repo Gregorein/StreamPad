@@ -1,7 +1,7 @@
 import { ReactNode, useState } from "react"
 import View from "components/View"
-import { Alert, Box, IconButton, Input, Typography } from "@mui/joy"
-import { Search, X } from "lucide-react"
+import { Alert, Box, Typography } from "@mui/joy"
+import SearchInput from "components/SearchInput"
 
 const Plugins = (): ReactNode => {
 	const [search, setSearch] = useState("")
@@ -18,19 +18,7 @@ const Plugins = (): ReactNode => {
 			>
 				<Typography level="h2">Plugins</Typography>
 
-				<Input
-					startDecorator={<Search />}
-					endDecorator={
-						search.length > 0 && (
-							<IconButton variant="soft" color="danger" onClick={() => setSearch("")}>
-								<X size={20} />
-							</IconButton>
-						)
-					}
-					placeholder="Search plugins..."
-					value={search}
-					onChange={(e) => setSearch(e.target.value)}
-				/>
+				<SearchInput value={search} onChange={setSearch} placeholder="Search plugins..." />
 			</Box>
 
 			<Box

@@ -3,6 +3,7 @@ import View from "components/View"
 import { Box, Button, FormControl, FormLabel, Option, Input, Select, Typography } from "@mui/joy"
 import { Grid2X2, Settings, MoveHorizontal, MoveVertical, Proportions } from "lucide-react"
 import Dialog from "components/Dialog"
+import SearchInput from "components/SearchInput"
 
 type ScreenRatio = "Adaptive" | "21:9" | "16:9" | "16:10" | "4:3" | "1:1"
 const screenRatioOptions: Record<ScreenRatio, number | null> = {
@@ -21,6 +22,7 @@ const Editor = (): ReactNode => {
 	const [ratio, setRatio] = useState<ScreenRatio>("Adaptive")
 	const [height, setHeight] = useState("100%")
 	const [width, setWidth] = useState("100%")
+	const [search, setSearch] = useState("")
 
 	const containerRef = useRef<HTMLDivElement>(null)
 	useEffect(() => {
@@ -170,13 +172,23 @@ const Editor = (): ReactNode => {
 
 					<Box
 						sx={{
-							border: "1px solid",
-							borderColor: "background.level2",
-							borderRadius: 8,
-							flex: 1
+							flex: 1,
+							display: "flex",
+							flexDirection: "column",
+							gap: 2
 						}}
 					>
-						aside be here
+						<SearchInput value={search} placeholder="Search controls..." onChange={setSearch} />
+						<Box
+							sx={{
+								border: "1px solid",
+								borderColor: "background.level2",
+								borderRadius: 8,
+								flex: 1
+							}}
+						>
+							aside be here
+						</Box>
 					</Box>
 				</Box>
 			</View>
