@@ -1,86 +1,86 @@
 {
-  "name": "streampad",
-  "version": "0.1.5",
-  "description": "A customizable control interface for streamers, featuring plugin support and integrations with popular streaming platforms.",
-  "repository": "https://github.com/Gregorein/StreamPad",
-  "author": {
-    "name": "Gregorein",
-    "email": "contact@gregbak.com"
-  },
-  "homepage": "https://streampad.website/",
-  "license": "LICENSE",
-  "private": true,
-  "main": "./out/main/index.js",
-  "scripts": {
-    "format": "prettier --write .",
-    "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
-    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
-    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
-    "typecheck": "npm run typecheck:node && npm run typecheck:web",
-    "start": "electron-vite preview",
-    "dev": "electron-vite dev",
-    "build": "npm run typecheck && electron-vite build",
-    "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux",
-    "postinstall": "electron-builder install-app-deps",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "@electron-toolkit/preload": "^3.0.1",
-    "@electron-toolkit/utils": "^3.0.0",
-    "electron-updater": "^6.1.7"
-  },
-  "devDependencies": {
-    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
-    "@electron-toolkit/eslint-config-ts": "^2.0.0",
-    "@electron-toolkit/tsconfig": "^1.0.1",
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
-    "@fontsource/roboto": "^5.0.14",
-    "@mui/joy": "^5.0.0-beta.48",
-    "@types/node": "^20.14.8",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.1",
-    "@typescript-eslint/parser": "^8.0.1",
-    "@vitejs/plugin-react": "^4.3.1",
-    "@vitejs/plugin-react-swc": "^3.7.0",
-    "electron": "^31.0.2",
-    "electron-builder": "^24.13.3",
-    "electron-vite": "^2.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.9",
-    "framer-motion": "^11.3.24",
-    "framer-motion-3d": "^11.3.24",
-    "husky": "^9.1.4",
-    "jotai": "^2.9.2",
-    "lucide-react": "^0.427.0",
-    "normalize.css": "^8.0.1",
-    "prettier": "^3.3.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0",
-    "typescript": "^5.5.2",
-    "vite": "^5.3.1"
-  },
-  "build": {
-    "appId": "com.gregorein.streampad",
-    "directories": {
-      "buildResources": "assets"
-    },
-    "win": {
-      "icon": "assets/icon.ico"
-    },
-    "mac": {
-      "icon": "assets/icon.icns"
-    },
-    "linux": {
-      "icon": "assets/icon.png"
-    }
-  }
+	"name": "streampad",
+	"version": "0.1.6",
+	"description": "A customizable control interface for streamers, featuring plugin support and integrations with popular streaming platforms.",
+	"repository": "https://github.com/Gregorein/StreamPad",
+	"author": {
+		"name": "Gregorein",
+		"email": "contact@gregbak.com"
+	},
+	"homepage": "https://streampad.website/",
+	"license": "LICENSE",
+	"private": true,
+	"main": "./out/main/index.js",
+	"scripts": {
+		"format": "prettier --write .",
+		"lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+		"typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+		"typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+		"typecheck": "npm run typecheck:node && npm run typecheck:web",
+		"start": "electron-vite preview",
+		"dev": "electron-vite dev",
+		"build": "npm run typecheck && electron-vite build",
+		"build:unpack": "npm run build && electron-builder --dir",
+		"build:win": "npm run build && electron-builder --win",
+		"build:mac": "electron-vite build && electron-builder --mac",
+		"build:linux": "electron-vite build && electron-builder --linux",
+		"postinstall": "electron-builder install-app-deps",
+		"prepare": "husky init"
+	},
+	"dependencies": {
+		"@electron-toolkit/preload": "^3.0.1",
+		"@electron-toolkit/utils": "^3.0.0",
+		"electron-updater": "^6.1.7"
+	},
+	"devDependencies": {
+		"@electron-toolkit/eslint-config-prettier": "^2.0.0",
+		"@electron-toolkit/eslint-config-ts": "^2.0.0",
+		"@electron-toolkit/tsconfig": "^1.0.1",
+		"@emotion/react": "^11.13.0",
+		"@emotion/styled": "^11.13.0",
+		"@fontsource/roboto": "^5.0.14",
+		"@mui/joy": "^5.0.0-beta.48",
+		"@types/node": "^20.14.8",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"@typescript-eslint/eslint-plugin": "^8.0.1",
+		"@typescript-eslint/parser": "^8.0.1",
+		"@vitejs/plugin-react": "^4.3.1",
+		"@vitejs/plugin-react-swc": "^3.7.0",
+		"electron": "^31.0.2",
+		"electron-builder": "^24.13.3",
+		"electron-vite": "^2.3.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-react": "^7.34.3",
+		"eslint-plugin-react-hooks": "^4.6.2",
+		"eslint-plugin-react-refresh": "^0.4.9",
+		"framer-motion": "^11.3.24",
+		"framer-motion-3d": "^11.3.24",
+		"husky": "^9.1.4",
+		"jotai": "^2.9.2",
+		"lucide-react": "^0.427.0",
+		"normalize.css": "^8.0.1",
+		"prettier": "^3.3.2",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router-dom": "^6.26.0",
+		"typescript": "^5.5.2",
+		"vite": "^5.3.1"
+	},
+	"build": {
+		"appId": "com.gregorein.streampad",
+		"directories": {
+			"buildResources": "assets"
+		},
+		"win": {
+			"icon": "assets/icon.ico"
+		},
+		"mac": {
+			"icon": "assets/icon.icns"
+		},
+		"linux": {
+			"icon": "assets/icon.png"
+		}
+	}
 }

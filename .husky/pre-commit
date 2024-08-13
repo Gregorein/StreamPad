@@ -1,1 +1,1 @@
-yarn
+sh scripts/bump-version.sh
